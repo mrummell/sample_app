@@ -19,11 +19,14 @@ end
 group :development do
 	gem 'rspec-rails'
 	gem 'sqlite3-ruby'
+	gem 'autotest'
+	gem 'autotest-standalone'
 end
 group :test do
 	gem 'rspec'
 	gem 'webrat'
 	gem 'sqlite3-ruby'
+	gem 'spork'
 end
 
 group :production do
