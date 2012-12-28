@@ -26,6 +26,10 @@ group :test do
 	gem 'sqlite3-ruby'
 end
 
+group :production do
+  # gems specifically for Heroku go here
+  gem "pg"
+end
 
 gem 'jquery-rails'
 
