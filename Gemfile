@@ -21,6 +21,7 @@ group :development do
 	gem 'sqlite3-ruby'
 	gem 'autotest'
 	gem 'autotest-standalone'
+	gem 'annotate'
 end
 group :test do
 	gem 'rspec'

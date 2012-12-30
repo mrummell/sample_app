@@ -28,6 +28,8 @@ GEM
     activesupport (3.2.1)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    annotate (2.5.0)
+      rake
     arel (3.0.2)
     autotest (4.3.2)
     autotest-standalone (4.5.11)
@@ -130,6 +132,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  annotate
   autotest
   autotest-standalone
   coffee-rails (~> 3.2.1)
