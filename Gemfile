@@ -28,6 +28,7 @@ group :test do
 	gem 'webrat'
 	gem 'sqlite3-ruby'
 	gem 'spork'
+	gem 'factory_girl_rails'
 end
 
 group :production do
