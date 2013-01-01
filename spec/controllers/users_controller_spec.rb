@@ -6,14 +6,14 @@ describe UsersController do
   describe "Get 'show'" do
 
     before(:each) do
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
     end
 
     it "should product a Factory instance" do
       @user.should_not be_nil
       @user.name.should == "Michael Hartl"
     end
-    
+
     it "should be successful" do
       get :show, :id => @user
       response.should be_success
@@ -23,6 +23,22 @@ describe UsersController do
       get :show, :id => @user
       assigns(:user).should == @user
     end
+
+    it "should have the right title" do
+      get :show, :id => @user
+      response.should have_selector("title", :content => @user.name)
+    end
+ 
+    it "should include the users name" do
+      get :show, :id => @user
+      response.should have_selector("h1", :content => @user.name)
+    end
+  
+    it "should include the users name" do
+      get :show, :id => @user
+      response.should have_selector("h1>img", :class => "gravatar")
+    end
+
   end
 
 
