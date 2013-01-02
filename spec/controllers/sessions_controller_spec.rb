@@ -68,7 +68,6 @@ describe SessionsController do
   		test_sign_in(user)
   		delete :destroy
   		controller.should_not be_signed_in
-  		controller.current_user.should be_nil
   		response.should redirect_to(root_path)
   	end
   end
