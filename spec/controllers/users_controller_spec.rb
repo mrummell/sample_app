@@ -312,8 +312,8 @@ describe UsersController do
     describe "as an admin user" do
 
       before(:each) do
-        admin = FactoryGirl.create(:user, :email => "admin@example.com", :admin => true)
-        test_sign_in(admin)
+        @admin = FactoryGirl.create(:user, :email => "admin@example.com", :admin => true)
+        test_sign_in(@admin)
       end
 
       it "should destroy the user" do
@@ -326,6 +326,28 @@ describe UsersController do
         delete :destroy, :id => @user
         response.should redirect_to(users_path)
       end
+
+      it "should not destroy self-user" do
+        lambda do
+          delete :destroy, :id => @admin
+        end.should change(User, :count).by(0)
+      end
     end    
+
+    describe "delete links " do
+
+      it "should not have link for non-admin" do
+        user = FactoryGirl.create(:user, :email => "test@example.org", :admin => false)
+        test_sign_in(user)
+        get :index
+        response.should_not have_selector("a", :title => "Delete")
+      end
+     it "should not have link for non-admin" do
+        user = FactoryGirl.create(:user, :email => "test@example.org", :admin => true)
+        test_sign_in(user)
+        get :index
+        response.should_not have_selector("a", :title => "Delete")
+      end
+    end
   end
 end
