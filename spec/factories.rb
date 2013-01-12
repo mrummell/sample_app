@@ -13,4 +13,9 @@ FactoryGirl.define do
     "email#{n}@factory.com"
   end
 
+  factory :micropost do 
+  	content 			"Foo Bar"
+  	user #association
+  end
+
 end
